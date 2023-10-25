@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 function Copyright() {
   return (
@@ -31,34 +31,12 @@ function Copyright() {
 
 const defaultTheme = createTheme();
 
-export default function Album() {
+export default function Album2() {
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
       e.preventDefault();
-  
-      try {
-          const response = await fetch('http://localhost2.com:3001/redirect', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  // 'x-token': Cookies.get('token') //"token_xyz"
-                  'x-token': "token_xyz"
-              },
-          });
-  
-          if (response.ok) {
-              // Redirect to Domain3, which will subsequently call Domain2 to fetch the token 
-              window.location.href = 'http://localhost:8000/apps/clientonboarding';
-              // window.location.href = 'https://ingress-unity-uk.dyedurham.dev/apps/clientonboarding';
-          } else {
-              console.error('Request failed:', response.status, response.statusText);
-          }
-      } catch (error) {
-          console.error('There was an error:', error);
-      }
+      document.getElementById("redirectForm").submit();
   };
-  
-
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -98,7 +76,8 @@ export default function Album() {
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
-          <Grid container spacing={4}>
+          {/* End hero unit */}
+          <Grid container spacing={4} justifyContent={'end'}>
             <Grid item key={3} xs={12} sm={6} md={4}>
                 <Card
                     sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
@@ -120,13 +99,19 @@ export default function Album() {
                     </Typography>
                     </CardContent>
                     <CardActions>
+                    <form id="redirectForm" action="http://localhost2.com:3001/redirect" method="post">
+                        <input type="hidden" name="token" value="token_xyz" /> 
+                        {/* Cookies.get('token') //"token_xyz" */}
+                    </form>
                     <Button size="small" onClick={handleSubmit}>Launch Application</Button>
                     </CardActions>
                 </Card>
             </Grid>
+              {/* ))} */}
           </Grid>
         </Container>
       </main>
+      {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
           Footer
