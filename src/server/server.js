@@ -34,7 +34,7 @@ app.post('/redirect', (req, res) => {
     res.setHeader('token', token);
 
     // Set token as a cookie
-    // res.cookie('token', token, { httpOnly: false });
+    res.cookie('token', token, { httpOnly: false });
     // res.cookie('token', token, { httpOnly: true, sameSite: 'None', secure: true });
 
     // Redirect
