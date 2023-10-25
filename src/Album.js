@@ -99,7 +99,7 @@ export default function Album2() {
                     </Typography>
                     </CardContent>
                     <CardActions>
-                    <form id="redirectForm" action="http://localhost2.com:3001/redirect" method="post">
+                    <form id="redirectForm" action="http://localhost:3001/redirect" method="post">
                         <input type="hidden" name="token" value="token_xyz" /> 
                         {/* Cookies.get('token') //"token_xyz" */}
                     </form>
