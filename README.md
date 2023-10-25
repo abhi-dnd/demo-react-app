@@ -19,4 +19,6 @@ Album component is the main component being used in project: `src/Album.js`
 `src/server/server.js`
 
 
+### External project
 
+Also need to run Client Onboarding locally to properly redirect: https://github.com/dyedurham/UH.ClientOnboarding.ui/tree/master
