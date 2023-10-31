@@ -24,15 +24,15 @@ app.use(cors({
 }));
 
 app.post('/login_flutter', (req, res) => {
-    // const token = req.body.token;
-    const token = 'Hello';
+    const {userId, userName, companyId, companyName} = req.body;
+    const token = userId + '-' + userName + '-' + companyId + '-' + companyName;
 
     if (!token) {
         return res.status(400).json({ error: "Token not provided" });
     }
 
     // Set token as Response Header
-    res.setHeader('token', token);
+    // res.setHeader('token', token);
 
     // Set token as a cookie
     res.cookie('token', token, { httpOnly: false });
